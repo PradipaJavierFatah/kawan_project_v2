@@ -1,3 +1,5 @@
+@extends('layout')
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -5,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kawan | Home</title>
+    <title>Testing</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,399 +18,176 @@
         rel="stylesheet">
 </head>
 
-{{-- Homepage setelah login, cuma beda sekarang pake foto profile aja gk ada sign in dan login button lagi sisanya sama --}}
+<body class="font-poppins">
 
+    <div id="header">
+            {{-- Navbar Start --}}
 
-@extends('layout')
-@section('content')
+        <nav class="sticky top-0 z-50 bg-white">
+            @section('content')
+        </nav>
 
+            {{-- Navbar End --}}
 
-<body class="font-Kanit">
-    {{-- Navbar Start --}}
-    {{-- <div id="navbar">
-        <nav class="bg-primary p-4 flex justify-between items-center">
-            <div>
-                <a href="home-after">
-                    <img src="asset/home/logo.png" alt="Kawan" class="h-12 w-auto">
-                </a>
-            </div>
+                {{-- Home Start --}}
+        <div class="container">
+            <div class="w-screen">
+                <div
+                    style="background-image: url('{{ asset('asset/home/bg-1.png') }}'); background-size: cover; background-position: center; height: 100vh;">
 
-            <ul class="lg:flex gap-8 hidden">
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="home-after">Home</a>
-                </li>
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="#our_service">Services</a>
-                </li>
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="plans-login" target="_blank">Payments</a>
-                </li>
-            </ul>
-
-            <div class="lg:flex gap-2 hidden">
-                <a href="dashboard" class="flex flex-row items-center">
-                    <span class="px-4 text-xl font-bold">Yanto</span>
-                    <img src="asset/home/profile.png" alt="" class="h-12 w-12 rounded-full">
-                </a>
-            </div>
-
-            <button id="hamburgToggle" class="lg:hidden block">
-                <img src="asset/home/hamburgicon.png" alt="" class="h-8 w-8">
-            </button>
-        </nav> --}}
-
-    {{-- Mobile Menu --}}
-    {{-- <div id="mobile-menu" class="hidden bg-primary">
-            <ul class="px-4 py-2">
-                <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
-                    <a href="homeafter">Home</a>
-                </li>
-                <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
-                    <a href="">Services</a>
-                </li>
-                <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
-                    <a href="">Payments</a>
-                </li>
-            </ul>
-
-            <hr class="border-black m-5">
-
-            <div class="flex px-4 pt-2 pb-4 gap-2">
-                <a href="#" class="flex flex-row items-center">
-                    <img src="asset/home/profile.png" alt="" class="h-12 w-auto">
-                    <span class="px-4 text-lg font-bold">Username</span>
-                </a>
-            </div>
-        </div> --}}
-    {{-- Mobile Menu --}}
-    {{-- </div> --}}
-    {{-- Navbar End --}}
-
-
-    {{-- Test Nabar Start --}}
-
-
-    {{-- Test Nabar End --}}
-
-
-    {{-- Content Start --}}
-    {{-- Jumbotron Start --}}
-    <section>
-        <div class="bg-gradient-to-b from-primary to-white">
-            <p class="py-20 px-4 text-center sm:text-xl md:text-2xl lg:text-3xl">
-                Kawan is a comprehensive online platform offering <strong class="font-semibold">professional mental
-                    health consultation and mentoring services.</strong>
-                With a team of <strong class="font-semibold">licensed therapists, psychologists, and
-                    counselors,</strong> the website provides
-                <strong class="font-semibold">personalized guidance and support</strong> for individuals facing various
-                mental health challenges or seeking personal development.
-            </p>
-        </div>
-    </section>
-    {{-- Jumbotron End --}}
-
-    {{-- Services Start --}}
-    <section id="our_service">
-        <div class="text-2xl font-semibold text-center py-5">
-            <span>OUR SERVICES</span>
-        </div>
-
-        <div class="flex justify-center space-x-6 font-medium mb-8">
-            <div class="grid md:grid-cols-4 sm:grid-cols-2">
-                <div class="p-6">
-                    <a href="mentoring"
-                        class="text-lg bg-gray-100 flex flex-col items-center py-2 px-4 w-40 rounded shadow-lg hover:bg-primary">
-                        <img src="asset/home/image 15.png" alt="Services" class="w-16 h-16 mb-2">
-                        Mentoring
-                    </a>
-                </div>
-
-                <div class="p-6">
-                    <a href="consult"
-                        class="text-lg bg-gray-100 flex flex-col items-center py-2 px-4 w-40 rounded shadow-lg hover:bg-primary">
-                        <img src="asset/home/image 15.png" alt="Services" class="w-16 h-16 mb-2">
-                        Consulting
-                    </a>
-                </div>
-
-                <div class="p-6">
-                    <a href="personality-test"
-                        class="text-lg bg-gray-100 flex flex-col items-center py-2 px-4 w-40 rounded shadow-lg hover:bg-primary">
-                        <img src="asset/home/image 15.png" alt="Services" class="w-16 h-16 mb-2">
-                        MBTI Test
-                    </a>
-                </div>
-
-                <div class="p-6">
-                    <a href="stress-level-Check"
-                        class="text-lg bg-gray-100 flex flex-col items-center py-2 px-4 w-40 rounded shadow-lg hover:bg-primary">
-                        <img src="asset/home/image 15.png" alt="Services" class="w-16 h-16 mb-2">
-                        Stress Test
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Services End --}}
-
-    {{-- Articles Start --}}
-    <section>
-        <div class="text-2xl font-semibold text-center py-5 flex-wrap">
-            <span>ARTICLES & NEWS</span>
-        </div>
-
-        <div id="container" class="bg-white">
-            <div class="p-4">
-                <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/remaja.png" alt="" class="w-full h-52 rounded-lg bg-center">
+                    {{-- Section Start --}}
+                    <section id="home" class="pt-36">
+                        <div class="container px-6">
+                            <div class="flex flex-wrap px-7">
+                                <div class="w-full self-center px-4">
+                                    <h1 class="text-base font-bold text-yellow-400 md:text-4xl">
+                                        Learning to<span
+                                            class="mt-4 block text-4xl font-bold text-yellow-400 lg:text-5xl">
+                                            Achieve and Maintain a Good Life</span>
+                                    </h1>
+                                </div>
+                                <p class="m-4 font-medium leading-relaxed text-white">
+                                    Kawan Project is an educational platform that presents various important knowledge about
+                                    life that is rarely taught in schools. Our goal is to accompany and help you develop
+                                    yourself to achieve a better and more balanced life. With various inspiring and
+                                    practical content, we are committed to being your partner on your journey to the best
+                                    version of yourself.
+                                </p>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Mengenal Pentingnya Kesehatan Mental pada Remaja</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://yankes.kemkes.go.id/view_artikel/362/mengenal-pentingnya-kesehatan-mental-pada-remaja"
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
+                    </section>
+                    {{-- Section End --}}
+
+                    {{-- Services Start --}}
+                    <div id="services" class="mt-8">
+                        <!-- Our Services Title -->
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold text-white">Our Services</h2>
+                        </div>
+
+                        <!-- Card Container -->
+                        <div class="container mx-auto flex justify-center">
+                            <div id="skillsContainer"
+                                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-4">
+
+                                <!-- Card 1 -->
+                                <div
+                                    class="group relative flex flex-col justify-center items-center bg-purple-900 p-6 rounded-lg hover:bg-purple-700 transition-colors duration-300 w-48 h-54">
+                                    <img src="{{ asset('asset/home/Mentor.png') }}" alt="Mentor" class="w-25 h-25 mb-2">
+                                    <h3 class="mt-4 text-center text-white font-medium">Mentor</h3>
+                                </div>
+
+                                <!-- Card 2 -->
+                                <div
+                                    class="group relative flex flex-col justify-center items-center bg-purple-900 p-6 rounded-lg hover:bg-purple-700 transition-colors duration-300 w-48 h-54">
+                                    <img src="{{ asset('asset/home/Consultant.png') }}" alt="Consultant"
+                                        class="w-25 h-25 mb-2">
+                                    <h3 class="mt-4 text-center text-white font-medium">Consultant</h3>
+                                </div>
+
+                                <!-- Card 3 -->
+                                <div
+                                    class="group relative flex flex-col justify-center items-center bg-purple-900 p-6 rounded-lg hover:bg-purple-700 transition-colors duration-300 w-48 h-54">
+                                    <img src="{{ asset('asset/home/mbti.png') }}" alt="MBTI Test" class="w-25 h-25 mb-2">
+                                    <h3 class="mt-4 text-center text-white font-medium">MBTI Test</h3>
+                                </div>
+
+                                <!-- Card 4 -->
+                                <div
+                                    class="group relative flex flex-col justify-center items-center bg-purple-900 p-6 rounded-lg hover:bg-purple-700 transition-colors duration-300 w-48 h-54">
+                                    <img src="{{ asset('asset/home/stresss.png') }}" alt="Stress Test"
+                                        class="w-25 h-25 mb-2">
+                                    <h3 class="mt-4 text-center text-white font-medium">Stress Test</h3>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+                    {{-- Services End --}}
+                </div>
+            </div>
+        </div>
+    {{-- Home End --}}
 
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/kesmen.webp" alt=""
-                                class="w-full h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Apa Itu Kesehatan Mental? Gejala & Penyebab</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://www.halodoc.com/kesehatan/kesehatan-mental" target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        {{-- Carousel Start --}}
+        <div class="container">
+            <div class="w-screen">
+                <div
+                style="background-image: url('{{ asset('asset/home/bg-2.png') }}'); background-size: cover; background-position: center; height: 100vh;">
 
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/mhawareness.png" alt=""
-                                class="w-full lg:h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4 ">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Memahami Kesehatan Mental dan Cara Penanganannya</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://rsj.acehprov.go.id/berita/kategori/artikel/memahami-kesehatan-mental-dan-cara-penanganannya"
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center pt-8 mb-8">
+                    <h2 class="text-3xl font-bold text-white">Attractive Offers</h2>
+                </div>
 
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/artikel4-konsul.jpg" alt=""
-                                class="w-full h-52 rounded-lg bg-center">
+                    {{-- Section Start --}}
+                    <div class="container mx-auto flex justify-center">
+                    <div id="default-carousel" class="relative w-full " data-carousel="slide">
+                        <!-- Carousel wrapper -->
+                        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                            <!-- Item 1 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="{{ asset('asset/home/test1.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="{{ asset('asset/home/test2.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="{{ asset('asset/home/test3.jpg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="{{ asset('asset/home/test4.jpeg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Manfaat Konsultasi Psikologi untuk Kesehatan Mental</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://www.alodokter.com/memanfaatkan-konsultasi-psikologi-untuk-meningkatkan-kesehatan-mental#:~:text=Konsultasi%20psikologi%20adalah%20kegiatan%20komunikasi,gangguan%20mental%20yang%20dialami%20pasien."
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
+                        <!-- Slider indicators -->
+                        <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                         </div>
+                        <!-- Slider controls -->
+                        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-white-800/30 group-hover:bg-white/50 dark:group-hover:bg-white-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-white-800/70 group-focus:outline-none">
+                                <svg class="w-4 h-4 text-white dark:text-white-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                                </svg>
+                                <span class="sr-only">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-white-800/30 group-hover:bg-white/50 dark:group-hover:bg-white-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-white-800/70 group-focus:outline-none">
+                                <svg class="w-4 h-4 text-white dark:text-white-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                                </svg>
+                                <span class="sr-only">Next</span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {{-- Articles Start --}}
+    </div>
+        {{-- Carousel End --}}
 
-    {{-- Testimonials Start --}}
-    <section>
-        <div class="text-2xl font-semibold text-center py-5 flex-wrap">
-            <span>SEE WHAT PEOPLE SAYS</span>
-        </div>
+        @endsection
 
-        <div id="container">
-            <div class="p-4">
-                <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-                    <div id="box" class="bg-gray-100 rounded-lg mr-4 mb-2">
-                        <div class="p-4">
-                            <div class="text-center border-2 border-black rounded-xl">
-                                <p>Mentoring</p>
-                            </div>
-                            <div class="mt-2 text-lg text-black text-center">
-                                <span>- Sarah Johnson</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black text-center">
-                                <h3>Alex Thompson's mentorship transformed my approach to mental health, providing me
-                                    with effective strategies and unwavering support.</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg mr-4 mb-2">
-                        <div class="p-4">
-                            <div class="text-center border-2 border-black rounded-xl">
-                                <p>Consulting</p>
-                            </div>
-                            <div class="mt-2 text-lg text-black text-center">
-                                <span>- Michael Brown</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black text-center">
-                                <h3>Harper Wilson's consulting helped me develop better coping mechanisms and
-                                    significantly improve my overall well-being.</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg mr-4 mb-2">
-                        <div class="p-4">
-                            <div class="text-center border-2 border-black rounded-xl">
-                                <p>Mentoring</p>
-                            </div>
-                            <div class="mt-2 text-lg text-black text-center">
-                                <span>- Jessica Lee</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black text-center">
-                                <h3>With Casey Nguyen's guidance, I gained valuable insights that have greatly enhanced
-                                    my mental health journey.</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg mr-4 mb-2">
-                        <div class="p-4">
-                            <div class="text-center border-2 border-black rounded-xl">
-                                <p>Consulting</p>
-                            </div>
-                            <div class="mt-2 text-lg text-black text-center">
-                                <span>- David Clark</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black text-center">
-                                <h3>Skylar Davis's expertise and encouragement were crucial in helping me manage stress
-                                    and achieve a healthier mindset.</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Testimonials End --}}
-    {{-- Content End --}}
-
-    {{-- Footer Start --}}
-    <footer class="bg-primary mt-5 p-4">
-        <div class="flex justify-between">
-            <div>
-                <a href="home-after">
-                    <img src="asset/home/logo.png" alt="Kawan" class="h-12 w-auto">
-                </a>
-            </div>
-
-            <div class="flex flex-row space-x-12">
-                <div class="">
-                    <h2 class="text-2xl font-bold">
-                        Tentang Kawan
-                    </h2>
-                    <ul class="text-lg font-semibold py-4">
-                        <li class="py-2 hover:underline">
-                            <a href="">About Us</a>
-                        </li>
-                        <li class="py-2 hover:underline">
-                            <a href="">Blog</a>
-                        </li>
-                        <li class="py-2 hover:underline">
-                            <a href="">Privacy & Policy</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold">
-                        Find Us On
-                    </h2>
-                    <ul class="text-lg font-semibold py-4">
-                        <li class="py-2 hover:underline">
-                            <a href="https://instagram.com">Instagram</a>
-                        </li>
-                        <li class="py-2 hover:underline">
-                            <a href="https://x.com">Twitter</a>
-                        </li>
-                        <li class="py-2 hover:underline">
-                            <a href="https://facebook.com">Facebook</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-6 border-gray-800">
-
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm sm:text-center">
-                © 2023 Kawan™ All Rights Reserved.
-            </span>
-            <div class="flex mt-4">
-                <a href="https://instagram.com" class="text-black" target="_blank">
-                    <img src="asset/home//instagram.png" alt="Instagram" class="h-6 w-6">
-                    <span class="sr-only">Instagram page</span>
-                </a>
-                <a href="https://x.com" class="ms-5">
-                    <img src="asset/home//twitter.png" alt="Twitter/X" class="h-6 w-6">
-                    <span class="sr-only">Twitter/X page</span>
-                </a>
-                <a href="https://facebook.com" class="ms-5 me-10">
-                    <img src="asset/home/facebook.png" alt="Facebook" class="h-6 w-6">
-                    <span class="sr-only">Facebook account</span>
-                </a>
-            </div>
-        </div>
-    </footer>
-    {{-- Footer End --}}
-
-    {{-- Script JS --}}
-    <script>
-        document.getElementById('hamburgToggle').addEventListener('click', function() {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden')
-        })
-    </script>
-    {{-- Script JS --}}
-</body>
-
-</html>
+    </div>
 
 
 
-@endsection
+
+
+
+
+
+    </body>
+    {{-- JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.js"></script>
+
+    </html>
+
+
