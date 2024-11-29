@@ -3,6 +3,7 @@
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -134,6 +135,17 @@ Route::get('/dashboard', function () {
 Route::get('/login', function () {
     return view('login');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/logout', function () {
+    Auth::logout(); // Logout user
+    return redirect('/login'); // Redirect ke halaman login
+})->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
