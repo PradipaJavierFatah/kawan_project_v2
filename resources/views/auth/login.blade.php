@@ -60,6 +60,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -87,14 +92,26 @@
                             </div>
 
                             <!-- Password -->
-                            <div class="mb-0">
+                            {{-- <div class="mb-0">
                                 <x-input-label for="password" :value="__('Password')" class="font-Kanit" />
                                 <x-text-input id="password" class="block mt-1 w-full font-Kanit bg-gray-50 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="password" name="password" required autocomplete="current-password" placeholder="Masukan password kamu..." />
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 <div class="flex justify-end">
                                     <h1 class="text-sm text-sky-600 cursor-pointer mb-0 mt-2"><a href="{{ route('password.request') }}">{{ __('Lupa password?') }}</a></h1>
                                 </div>
-                            </div>
+                            </div> --}}
+                            <!-- Password -->
+<div class="mb-0 relative">
+    <x-input-label for="password" :value="__('Password')" class="font-Kanit" />
+    <div class="relative">
+        <x-text-input id="password" class="block mt-1 w-full font-Kanit bg-gray-50 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" type="password" name="password" required autocomplete="current-password" placeholder="Masukan password kamu..." />
+        <i class="fas fa-eye absolute top-3 right-3 cursor-pointer text-gray-500" onclick="togglePassword('password')"></i>
+    </div>
+    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+    <div class="flex justify-end">
+        <h1 class="text-sm text-sky-600 cursor-pointer mb-0 mt-2"><a href="{{ route('password.request') }}">{{ __('Lupa password?') }}</a></h1>
+    </div>
+</div>
                         </div>
 
                         <!-- Remember Me -->
@@ -129,6 +146,20 @@
             event.preventDefault(); // Prevent the default form submission
             window.location.href = 'home'; // Redirect to the home page
         });
+
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
     </script>
 </body>
 
