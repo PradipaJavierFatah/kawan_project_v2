@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\cekController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Mentor;  // If you are using Eloquent models to fetch mentors
 
 
 /*
@@ -56,33 +58,23 @@ Route::get('/verify-email', function () {
 // Home - End chris
 
 // Payment - Start Sebastian
-Route::get('/checkout-pembayaran-1', function () {
-    return view('/payment/checkout-pembayaran-1');
-});
 
-Route::get('/checkout-pembayaran-2', function () {
-    return view('/payment/checkout-pembayaran-2');
-});
+Route::get('/checkout-pembayaran-{page}', [MentorController::class, 'showCheckoutPage'])
+    ->middleware('checkout.payment') // Ensure this middleware exists and is configured correctly
+    ->where('page', '[1-4]'); // Constraint: only accept page values between 1 and 4
 
-Route::get('/checkout-pembayaran-3', function () {
-    return view('/payment/checkout-pembayaran-3');
-});
 
-Route::get('/checkout-pembayaran-4', function () {
-    return view('/payment/checkout-pembayaran-4');
-});
+
+Route::get('/plans-login', [MentorController::class, 'showPlansLogin']);
 
 Route::get('/confirmation-page', function () {
     return view('/payment/confirmation-page');
 });
 
-Route::get('/plans-login', function () {
-    return view('/payment/plans-login');
-});
+// Route::get('/plans-unlogin', function () {
+//     return view('/payment/plans-unlogin');
+// });
 
-Route::get('/plans-unlogin', function () {
-    return view('/payment/plans-unlogin');
-});
 // Payment - End Sebastian
 
 // Stress Level - Start Abdi
