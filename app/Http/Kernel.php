@@ -6,6 +6,11 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    protected $routeMiddleware = [
+        // Other middlewares...
+        'checkout.payment' => \App\Http\Middleware\CheckoutPaymentMiddleware::class,
+    ];
+    
     /**
      * The application's global HTTP middleware stack.
      *

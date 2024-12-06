@@ -50,6 +50,11 @@ Route::get('/mentoring', function () {
     return view('/home/mentoring');
 });
 
+Route::get('/verify-email', function () {
+    return view('verify-email');
+});
+
+
 // Home - End chris
 
 // Payment - Start Sebastian
@@ -120,6 +125,12 @@ Route::get('/INTP', function () {
 // Personality - End Aufa
 
 
+// Login Start - Dipa
+Route::get('/verify-email', function () {
+    return view('verify-email');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -133,6 +144,7 @@ Route::post('/logout', function () {
     return redirect('/login'); // Redirect ke halaman login
 })->name('logout');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -145,6 +157,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Login End - Dipa
 
 Route::get('/cek1', function () {
     return '<h1>Cek<h1>';
