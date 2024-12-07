@@ -48,7 +48,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="">
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container">
