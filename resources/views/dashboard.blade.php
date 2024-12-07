@@ -22,12 +22,10 @@
 
     <div id="header">
         {{-- Navbar Start --}}
-
         <nav class="sticky top-0 z-50 bg-white">
             @section('content')
-            </nav>
-
-            {{-- Navbar End --}}
+        </nav>
+        {{-- Navbar End --}}
 
             {{-- Home Start --}}
             <div class="container">

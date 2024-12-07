@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plans and Pricing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plans and Pricing</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
@@ -196,21 +201,21 @@
             window.location.href = "{{ url('checkout-pembayaran-1') }}";
         }
 
-        function redirect2(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-2') }}";
-        }
+                function redirect2(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-2') }}";
+                }
 
-        function redirect3(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-3') }}";
-        }
+                function redirect3(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-3') }}";
+                }
 
-        function redirect4(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-4') }}";
-        }
-    </script>
-</body>
+                function redirect4(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-4') }}";
+                }
+            </script>
+    </body>
 
-</html>
+    </html>
