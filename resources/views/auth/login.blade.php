@@ -169,6 +169,12 @@
                                     {{ __('Log in') }}
                                 </x-primary-button>
                             </div>
+
+                            @if ($errors->any())
+        <div class="alert alert-danger mt-2">
+            {{ $errors->first() }}
+        </div>
+    @endif
                         </form>
 
                         <div class="flex justify-center mt-16 text-white">

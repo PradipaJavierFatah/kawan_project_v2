@@ -11,6 +11,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
 
     <style>
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+
         .card {
             background-color: #343a40; /* Dark gray */
             color: white; /* White text */
@@ -82,10 +89,13 @@
 
 <body>
     <div class="container py-5">
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary back-button">
+            Back
+        </a>
         <div class="text-center mb-4">
             <h2 class="fw-bold">Mentor List</h2>
         </div>
-    
+
         <!-- Mentor List (Paginated) -->
         <div id="mentor-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @foreach($mentors as $mentor)
@@ -98,12 +108,14 @@
                         <h5 class="card-title">{{ $mentor->name }}</h5>
                         <p class="card-text">Age: {{ $mentor->age }}</p>
                         <p class="card-text">{{ $mentor->description }}</p>
-                    </div>
+
+
+                </div>
                 </div>
             </div>
             @endforeach
         </div>
-    
+
         <!-- Pagination Links -->
         <div class="d-flex justify-content-center mt-4">
             {{ $mentors->links('pagination::bootstrap-4') }}
@@ -173,7 +185,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
