@@ -20,7 +20,6 @@ class MentorController extends Controller
     //     $mentors = Mentor::paginate(3); // Get 3 mentors per page
     //     return view('payment.checkout-pembayaran-1', compact('mentors'));
     // }
-
     public function showCheckoutPage($page)
 {
     Log::info("Page parameter: $page");

@@ -196,21 +196,30 @@
             window.location.href = "{{ url('checkout-pembayaran-1') }}";
         }
 
-        function redirect2(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-2') }}";
-        }
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        function redirect3(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-3') }}";
-        }
+            <script>
+                function redirect1(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-1') }}";
+                }
 
-        function redirect4(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-4') }}";
-        }
-    </script>
-</body>
+                function redirect2(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-2') }}";
+                }
 
-</html>
+                function redirect3(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-3') }}";
+                }
+
+                function redirect4(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-4') }}";
+                }
+            </script>
+    </body>
+
+    </html>

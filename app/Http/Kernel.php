@@ -10,7 +10,6 @@ class Kernel extends HttpKernel
         // Other middlewares...
         'checkout.payment' => \App\Http\Middleware\CheckoutPaymentMiddleware::class,
     ];
-
     /**
      * The application's global HTTP middleware stack.
      *
