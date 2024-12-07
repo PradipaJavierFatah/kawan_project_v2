@@ -3,6 +3,7 @@
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Mentor;  // If you are using Eloquent models to fetch mentors
@@ -65,7 +66,8 @@ Route::get('/checkout-pembayaran-{page}', [MentorController::class, 'showCheckou
 
 
 
-Route::get('/plans-login', [MentorController::class, 'showPlansLogin']);
+    Route::get('/plans-login', [MentorController::class, 'showPlansLogin'])->name('payment.plans-login');
+
 
 Route::get('/confirmation-page', function () {
     return view('/payment/confirmation-page');
@@ -133,6 +135,51 @@ Route::get('/verify-email', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// dashboard admin -- Aufa
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard_admin', function () {
+        return view('admin.dashboard_admin');
+    })->name('dashboard_admin');
+
+    // Rute untuk daftar mentor (halaman mentor_list)
+    Route::get('mentor_list', [MentorController::class, 'index'])->name('mentor_list');  // ini untuk menampilkan daftar mentor
+
+    // Rute untuk create mentor (halaman create_mentor)
+    Route::get('mentors/create', [MentorController::class, 'create'])->name('mentors.create');
+
+    // Rute untuk menyimpan mentor baru
+    Route::post('mentors', [MentorController::class, 'store'])->name('mentors.store');
+
+    // Rute untuk edit mentor (halaman edit_mentor)
+    Route::get('mentors/{id}/edit', [MentorController::class, 'edit'])->name('mentors.edit');
+
+    // Rute untuk memperbarui mentor
+    Route::put('mentors/{id}', [MentorController::class, 'update'])->name('mentors.update');
+
+    // Rute untuk menghapus mentor
+    Route::delete('mentors/{id}', [MentorController::class, 'destroy'])->name('mentors.destroy');
+
+});
+
+
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    // Halaman dashboard admin
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    // // Artikel
+    // Route::resource('articles', ArticleController::class);
+
+    // Mentor
+    Route::resource('mentors', MentorController::class);
+});
+
+
+
 
 Route::get('/login', function () {
     return view('login');

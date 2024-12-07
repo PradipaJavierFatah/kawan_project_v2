@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-
+                
                 <!-- Logo -->
                 <a href="dashboard" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{ asset('asset/home/logo.png') }}" class="h-8" alt="Logo" />
@@ -30,8 +30,8 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('dashboard')" class="hover:bg-yellow-400">
-                            {{ __('Dashboard') }}
+                        <x-dropdown-link :href="route('dashboard_admin')" class="hover:bg-yellow-400">
+                            {{ __('Dashboard Admin') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
