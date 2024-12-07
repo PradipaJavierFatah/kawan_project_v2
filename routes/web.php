@@ -66,7 +66,7 @@ Route::get('/checkout-pembayaran-{page}', [MentorController::class, 'showCheckou
 
 
 
-    Route::get('/payment/plans-login', [MentorController::class, 'showPlansLogin'])->name('payment.plans-login');
+    Route::get('plans-login', [MentorController::class, 'showPlansLogin'])->name('payment.plans-login');
 
 
 Route::get('/confirmation-page', function () {
