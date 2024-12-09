@@ -99,6 +99,9 @@
 
 <body>
     <div class="container mt-5">
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary back-button">
+            Back
+        </a>
         <div class="center-content">
             <h1>User Management</h1>
             <br>

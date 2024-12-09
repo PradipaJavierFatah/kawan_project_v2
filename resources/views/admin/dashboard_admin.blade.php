@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <h5 class="card-title">User's Database</h5>
                         <p class="card-text">Sensitive Content</p>
-                        <a class="btn btn-primary">Go to Users</a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Go to Users</a>
                     </div>
                 </div>
             </div>

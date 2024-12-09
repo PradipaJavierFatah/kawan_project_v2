@@ -6,11 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
 use App\Http\Controllers\Admin\UserController;
-=======
-use App\Models\Mentor;  // If you are using Eloquent models to fetch mentors
->>>>>>> fd0e78e2427e4dddef9257fcb907c9f803926216
 
 
 /*
@@ -206,7 +202,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
 // Grouping Route untuk Admin
 Route::prefix('admin')->name('admin.')->group(function () {
     // User Management Routes
@@ -225,9 +220,6 @@ Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])->name('ad
 Route::put('admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 // Route untuk menghapus user
 Route::delete('admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-=======
-// Login Admin Start - Dipa
->>>>>>> fd0e78e2427e4dddef9257fcb907c9f803926216
 
 
 // Login Admin End - Dipa
