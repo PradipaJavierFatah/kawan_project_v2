@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -175,3 +176,17 @@ Route::get('/cek1', function () {
 Route::get('/cek2', [cekController::class, 'index'])->middleware('auth', 'verified');
 
 require __DIR__ . '/auth.php';
+
+//Article Start - Ryan
+
+//Connect dashboard dan article
+Route::get('/dashboard', [ArticleController::class, 'dashboard'])->name('dashboard');
+// Baca Article
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+// Post Article
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+//Resources
+Route::resource('articles', ArticleController::class);
+// Delete Article
+Route::post('/article/{article}', [ArticleController::class, 'delete']);
+Route::put('/article/{article}', [ArticleController::class, 'update']);
