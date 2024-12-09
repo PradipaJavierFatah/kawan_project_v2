@@ -20,7 +20,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
     ```bash
     https://github.com/PradipaJavierFatah/kawan_project_v2
-    cd website-kawan-project-be
+    cd kawan_project_v2
     ```
 
 2. Install PHP dependencies:
