@@ -71,12 +71,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body class="bg-secondery">
+<body>
+    <div class="bg-cover bg-center bg-no-repeat min-h-screen" style="background-image: url('{{ asset('asset/login/bg.png') }}');">
     {{-- Daftar Akun Start --}}
     <section id="daftarakun" class="pt-24 pb-0 ">
         <div class="container mx-auto">
             <div class="w-full flex justify-center mb-2">
-                <img src="asset/login/Logo.png" alt="" width="200">
+                <img src="asset/home/Logo.png" alt="" width="200">
             </div>
 
             <div class="flex flex-wrap justify-center">
@@ -145,11 +146,12 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center text-black font-medium">
+        <div class="flex justify-center text-white font-medium">
             <h1>Sudah punya akun? <a href={{ route('login') }}><span class="cursor-pointer underline">Login
                         disini</span></a></h1>
         </div>
     </section>
+    </div>
 
     {{-- Daftar Akun End --}}
 

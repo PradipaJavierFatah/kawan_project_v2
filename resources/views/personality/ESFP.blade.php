@@ -1,3 +1,5 @@
+@extends('layout')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +7,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ESFP Personality</title>
-    @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/personality/output.css') }}">
+    @vite('resources/css/app.css')
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
 
     <link href="output.css" rel="stylesheet" />
@@ -38,37 +40,11 @@
 
 <body class="bg-pink-50 font-sans leading-normal tracking-normal">
     {{-- Navbar Start --}}
-    <div id="navbar">
-        <nav class="bg-primary p-4 flex justify-between items-center">
-            <div>
-                <a href="home-after">
-                    <img src="asset/home/logo.png" alt="Kawan" class="h-12 w-auto">
-                </a>
-            </div>
+    <nav class="sticky top-0 z-50 bg-white">
+    </nav>
+    {{-- Navbar End --}}
 
-            <ul class="lg:flex gap-8 hidden">
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="home-after">Home</a>
-                </li>
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="home-after">Services</a>
-                </li>
-                <li class="text-xl font-bold cursor-pointer hover:underline">
-                    <a href="plans-login">Payments</a>
-                </li>
-            </ul>
-
-            <div class="lg:flex gap-2 hidden">
-                <a href="dashboard" class="flex flex-row items-center">
-                    <span class="px-4 text-xl font-bold">Yanto</span>
-                    <img src="asset/home/profile.png" alt="" class="h-12 w-12 rounded-full">
-                </a>
-            </div>
-
-            <button id="hamburgToggle" class="lg:hidden block">
-                <img src="asset/home/hamburgicon.png" alt="" class="h-8 w-8">
-            </button>
-        </nav>
+    @section('content')
 
         <section class="bg-purple-300 p-8 flex items-center justify-center fade-in">
             <div class="flex items-center">
@@ -187,6 +163,11 @@
             </div>
         </section>
 
+
+        @endsection
+</body>
+
+
         <script>
             document
                 .getElementById("downloadButton")
@@ -204,70 +185,4 @@
                     document.body.removeChild(link);
                 });
         </script>
-
-        <footer class="bg-primary mt-5 p-4">
-            <div class="flex justify-between">
-                <div>
-                    <a href="homeafter">
-                        <img src="/asset/home/logo.png" alt="Kawan" class="h-12 w-auto" />
-                    </a>
-                </div>
-
-                <div class="flex flex-row space-x-12">
-                    <div class="">
-                        <h2 class="text-2xl font-bold">Tentang Kawan</h2>
-                        <ul class="text-lg font-semibold py-4">
-                            <li class="py-2 hover:underline">
-                                <a href="">About Us</a>
-                            </li>
-                            <li class="py-2 hover:underline">
-                                <a href="">Blog</a>
-                            </li>
-                            <li class="py-2 hover:underline">
-                                <a href="">Privacy & Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 class="text-2xl font-bold">Find Us On</h2>
-                        <ul class="text-lg font-semibold py-4">
-                            <li class="py-2 hover:underline">
-                                <a href="https://instagram.com">Instagram</a>
-                            </li>
-                            <li class="py-2 hover:underline">
-                                <a href="https://x.com">Twitter</a>
-                            </li>
-                            <li class="py-2 hover:underline">
-                                <a href="https://facebook.com">Facebook</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="my-6 border-gray-800" />
-
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm sm:text-center">
-                    © 2023 Kawan™ All Rights Reserved.
-                </span>
-                <div class="flex mt-4">
-                    <a href="https://instagram.com" class="text-black" target="_blank">
-                        <img src="asset/home/instagram.png" alt="Instagram" class="h-6 w-6" />
-                        <span class="sr-only">Instagram page</span>
-                    </a>
-                    <a href="https://x.com" class="ms-5">
-                        <img src="asset/home/twitter.png" alt="Twitter/X" class="h-6 w-6" />
-                        <span class="sr-only">Twitter/X page</span>
-                    </a>
-                    <a href="https://facebook.com" class="ms-5 me-10">
-                        <img src="asset/home/facebook.png" alt="Facebook" class="h-6 w-6" />
-                        <span class="sr-only">Facebook account</span>
-                    </a>
-                </div>
-            </div>
-        </footer>
-</body>
-
 </html>

@@ -1,5 +1,3 @@
-@extends('layout')
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -8,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Testing</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.css" rel="stylesheet">
-    @vite('resources/css/app.css')
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,14 +17,6 @@
 <body class="font-poppins">
 
     <div id="header">
-            {{-- Navbar Start --}}
-
-        <nav class="sticky top-0 z-50 bg-white">
-            @section('content')
-        </nav>
-
-            {{-- Navbar End --}}
-
                 {{-- Home Start --}}
         <div class="container">
             <div class="w-screen">
