@@ -241,6 +241,7 @@
                 </div>
             </div>
         </div>
+        {{-- Article End --}}
     </div>
     @endsection
     </body>
