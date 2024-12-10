@@ -1,5 +1,7 @@
 # Kawan Project Website
 
+![Kawan Project Logo](https://drive.google.com/uc?id=1ZvM950OpxGLHyOxyeqW7SmpBevPm2tmM "Kawan Project")
+
 This repository hosts the Kawan project, developed with Laravel, styled using Tailwind CSS, and Bootsrap 5.
 
 ## Table of Contents
