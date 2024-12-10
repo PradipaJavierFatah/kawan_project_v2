@@ -81,12 +81,14 @@ class ArticleController extends Controller
 
 
         if($request->hasFile('photo')){
-                if ($articles->photo && Storage::disk('public')->exists($articles->photo)) {
-                    Storage::disk('public')->delete($articles->photo);
+                if ($articles->photo) {
+                    Storage::delete($articles->photo);
             }
             $path = $request->file('photo')->store('photos', 'public');
             $validatedData['photo'] = $path;
         }
+
+        $articles->save();
 
         return redirect()->route('articles.create')->with('success', 'Data berhasil diperbarui !');
     }
