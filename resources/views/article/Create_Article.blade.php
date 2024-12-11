@@ -39,16 +39,16 @@
     </style>
 </head>
 
-<body>
+<body style="background-color:#19012C">
 <div class="w-screen">
-<div style="background-image: url('{{ asset('asset/home/bg-1.png') }}'); background-size: cover; background-position: center;height: 250vh;">
+<div>
     <div class="container mt-5">
         <div class="center-content">
-            <h1 style="color: #ffffff;">Create a New Article</h1>
+            <h1 style="color: #d8bfd8;">Create a New Article</h1>
             <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data" class="w-50">
                 @csrf
                 <div class="mb-3">
-                    <label for="photo" style="color: #ffffff;" class="form-label">Image</label>
+                    <label for="photo" style="color: #d8bfd8;" class="form-label">Image</label>
                     <input type="file" name="photo" class="form-control" required>
                     @error('photo')
                         <span class="alert alert-danger">{{ $message }}</span>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="title" style="color: #ffffff;" class="form-label">Title</label>
+                    <label for="title" style="color: #d8bfd8;" class="form-label">Title</label>
                     <input type="text" name="title" class="form-control" id="title" required>
                     @error('title')
                         <span class="alert alert-danger">{{ $message }}</span>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="category" style="color: #ffffff;" class="form-label">Category</label>
+                    <label for="category" style="color: #d8bfd8;" class="form-label">Category</label>
                     <input type="text" name="category" class="form-control" id="category" required>
                     @error('category')
                         <span class="alert alert-danger">{{ $message }}</span>
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="content" style="color: #ffffff;" class="form-label">Content</label>
+                    <label for="content" style="color: #d8bfd8;" class="form-label">Content</label>
                     <textarea name="content" class="form-control" id="content" required></textarea>
                     @error('content')
                         <span class="alert alert-danger">{{ $message }}</span>
@@ -83,7 +83,7 @@
             </form>
         </div>
 
-        <h2 style="color: #ffffff;">Existing Articles</h2>
+        <h2 style="color: #d8bfd8;">Existing Articles</h2>
         @if ($articles->isEmpty())
             <div class="no-data-message">
                 There are no articles available.

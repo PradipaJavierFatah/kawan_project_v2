@@ -29,8 +29,8 @@ class ArticleController extends Controller
             'content' => 'required|string',
         ]);
 
-        $path = $request->file('photo')->storeAs('image', $request->file('photo')->getClientOriginalName(),
-        'public');
+        $path = $request->file('photo')->store('image', 'public');
+
 
         Article::create([
             'photo' => $path,
@@ -65,7 +65,7 @@ class ArticleController extends Controller
         return view('article.article', compact('articles'));
     }
 
-    public function update(Request $request, Article $articles, $id)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
@@ -73,21 +73,27 @@ class ArticleController extends Controller
             'category' => 'required|string|max:100',
             'content' => 'required|string',
         ]);
-
+    
         $articles = Article::findOrFail($id);
-        $articles->title  = $request->title;
-        $articles->category = $request->category;
-        $articles->content = $request->content;
-
-
-        if($request->hasFile('photo')){
-                if ($articles->photo && Storage::disk('public')->exists($articles->photo)) {
-                    Storage::disk('public')->delete($articles->photo);
+        $articles->title = $validatedData['title'];
+        $articles->category = $validatedData['category'];
+        $articles->content = $validatedData['content'];
+    
+        if ($request->hasFile('photo')) {
+            // Delete the old photo if it exists
+            if ($articles->photo && Storage::disk('public')->exists($articles->photo)) {
+                Storage::disk('public')->delete($articles->photo);
             }
-            $path = $request->file('photo')->store('photos', 'public');
-            $validatedData['photo'] = $path;
+    
+            // Store the new photo
+            $path = $request->file('photo')->store('image', 'public');
+            $articles->photo = $path;
         }
-
-        return redirect()->route('articles.create')->with('success', 'Data berhasil diperbarui !');
+    
+        // Save the updated data to the database
+        $articles->save();
+    
+        return redirect()->route('articles.create')->with('success', 'Data berhasil diperbarui!');
     }
+    
 }
