@@ -1,182 +1,221 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href= "{{ asset('/css/payment/global.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plans and Pricing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plans and Pricing</title>
 
-    <link rel="stylesheet" href= "{{ asset('/css/payment/plans-login.css') }}" />
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Days One:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
+
+    <style>
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+
+        .card {
+            background-color: #343a40; /* Dark gray */
+            color: white; /* White text */
+            transition: transform 0.3s, background-color 0.3s, color 0.3s;
+            height: 500px; /* Fixed height */
+            width: 22%; /* Responsive width */
+            min-width: 280px; /* Prevent shrinking too small */
+            flex-grow: 1; /* Allow cards to expand evenly */
+            margin: 0 10px; /* Add horizontal spacing */
+        }
+
+        .card:hover {
+            background-color: #f4c2c2; /* Light pink */
+            color: black; /* Black text */
+            transform: translateY(-10px);
+        }
+
+        .list-group {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Even spacing between items */
+        }
+
+        .list-group-item {
+            border: none; /* Remove borders */
+            background-color: transparent; /* Make background transparent */
+            color: inherit; /* Keep text color consistent */
+            flex-grow: 1; /* Stretch items evenly */
+            display: flex;
+            align-items: center; /* Vertically align text */
+            justify-content: center; /* Horizontally align text */
+            padding: 0.5rem; /* Add some padding */
+        }
+
+        .list-group-item + .list-group-item {
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+        }
+
+        .card .card-header {
+            font-size: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+        }
+
+        .container {
+            text-align: center; /* Center text inside container */
+        }
+
+        /* Fade-in + Slide-up animation for the entire card */
+.card {
+    opacity: 0;
+    transform: translateY(20px); /* Initially position the card below */
+    animation: fadeUp 0.5s forwards;
+    animation-delay: 0.3s; /* Delay the animation for a smooth appearance */
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
 </head>
 
 <body>
-    <div class="plans-login">
-        <div class="best-plans-for-consulting-container">
-            <h1 class="best-plans-for-container1"><span>Rencana </span> <span class="plans1">Terbaik</span> <span> untuk
-                    Konsultasi</span></h1>
+    <div class="container py-5">
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary back-button">
+            Back
+        </a>
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Mentor List</h2>
         </div>
-        <form class="frame-parent17">
-            <div class="frame-parent18">
-                <div class="frame-parent19">
-                    <div class="starter-plan-parent2">
-                        <h1 class="starter-plan4">Paket Dasar</h1>
-                        <div class="frame-wrapper12">
-                            <div class="parent2">
-                                <b class="b4">Rp50K</b>
-                                <div class="month-wrapper2"> <b class="month4">/bulan</b> </div>
-                            </div>
-                        </div>
+
+        <!-- Mentor List (Paginated) -->
+        <div id="mentor-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach($mentors as $mentor)
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-img-wrapper" style="position: relative; padding-top: 133.33%; overflow: hidden;">
+                        <img src="{{ asset($mentor->picture) }}" class="card-img-top" alt="{{ $mentor->name }}" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: auto;">
                     </div>
-                    <div class="line-wrapper3">
-                        <div class="frame-child7"></div>
-                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $mentor->name }}</h5>
+                        <p class="card-text">Age: {{ $mentor->age }}</p>
+                        <p class="card-text">{{ $mentor->description }}</p>
+
+
                 </div>
-                <div class="frame-wrapper13">
-                    <button class="order-now-wrapper" onclick="redirect1(event)"> <b class="order-now">Pesan
-                            Sekarang</b> </button>
-                </div>
-                <div class="frame-parent20">
-                    <div class="frame-wrapper14">
-                        <div class="frame-parent21">
-                            <div class="package-wrapper2"> <b class="package4">Paket</b> </div>
-                            <div class="frame-child8"></div>
-                        </div>
-                    </div>
-                    <ul class="package-list">
-                        <li>1 sesi per bulan</li>
-                        <li>Akses ke sumber daya</li>
-                        <li>Dukungan melalui email</li>
-                    </ul>
                 </div>
             </div>
-            <div class="frame-parent22">
-                <div class="frame-parent23">
-                    <div class="starter-plan-parent3">
-                        <h1 class="starter-plan5">Paket Standar</h1>
-                        <div class="frame-wrapper15">
-                            <div class="parent3">
-                                <b class="b5">Rp150K</b>
-                                <div class="month-wrapper3"> <b class="month5">/bulan</b> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-wrapper4">
-                        <div class="frame-child9"></div>
-                    </div>
-                </div>
-                <div class="frame-wrapper16">
-                    <button class="order-now-container" onclick="redirect2(event)"> <b class="order-now1">Pesan
-                            Sekarang</b> </button>
-                </div>
-                <div class="frame-parent24">
-                    <div class="frame-wrapper17">
-                        <div class="frame-parent25">
-                            <div class="package-wrapper3"> <b class="package5">Paket</b> </div>
-                            <div class="frame-child10"></div>
-                        </div>
-                    </div>
-                    <ul class="package-list">
-                        <li>2 sesi per bulan</li>
-                        <li>Dukungan email prioritas</li>
-                        <li>Pelacakan kemajuan</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="frame-parent26">
-                <div class="frame-parent27">
-                    <div class="starter-plan-parent4">
-                        <h1 class="starter-plan6">Paket Premium</h1>
-                        <div class="frame-wrapper18">
-                            <div class="parent4">
-                                <b class="b6">Rp250K</b>
-                                <div class="month-wrapper4"> <b class="month6">/bulan</b> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-wrapper5">
-                        <div class="frame-child11"></div>
-                    </div>
-                </div>
-                <div class="frame-wrapper19">
-                    <button class="order-now-frame" onclick="redirect3(event)"> <b class="order-now2">Pesan Sekarang</b>
-                    </button>
-                </div>
-                <div class="frame-wrapper20">
-                    <div class="frame-parent28">
-                        <div class="package-wrapper4"> <b class="package6">Paket</b> </div>
-                        <div class="line-wrapper6">
-                            <div class="frame-child12"></div>
-                        </div>
-                        <ul class="package-list">
-                            <li>4 sesi per bulan </li>
-                            <li>Dukungan prioritas</li>
-                            <li>Rencana yang dipersonalisasi</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="frame-parent29">
-                <div class="frame-parent30">
-                    <div class="starter-plan-parent5">
-                        <h1 class="starter-plan7">Paket Ultimate</h1>
-                        <div class="frame-wrapper21">
-                            <div class="parent5">
-                                <b class="b7">Rp350K</b>
-                                <div class="month-wrapper5"> <b class="month7">/bulan</b> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-wrapper7">
-                        <div class="frame-child13"></div>
-                    </div>
-                </div>
-                <div class="frame-wrapper22">
-                    <button class="order-now-wrapper1" onclick="redirect4(event)"> <b class="order-now3">Pesan
-                            Sekarang</b> </button>
-                </div>
-                <div class="frame-parent31">
-                    <div class="frame-wrapper23">
-                        <div class="frame-parent32">
-                            <div class="package-wrapper5"> <b class="package7">Paket</b> </div>
-                            <div class="frame-child14"></div>
-                        </div>
-                    </div>
-                    <ul class="package-list4">
-                        <li>Sesi tanpa batas per bulan</li>
-                        <li>Dukungan 24/7</li>
-                        <li>Webinar bulanan</li>
-                    </ul>
-                </div>
-            </div>
-        </form>
+            @endforeach
+        </div>
+
+        <!-- Pagination Links -->
+        <div class="d-flex justify-content-center mt-4">
+            {{ $mentors->links('pagination::bootstrap-4') }}
+        </div>
     </div>
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1>
+                <span>Rencana</span>
+                <span style="color: #ba4e8a;">Terbaik</span>
+                <span>untuk Konsultasi</span>
+            </h1>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center g-4">
+            <!-- Paket Dasar -->
+            <div class="card text-center">
+                <div class="card-header">Paket Dasar</div>
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">Rp50K<span class="fs-6">/bulan</span></h2>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">1 sesi per bulan</li>
+                        <li class="list-group-item">Akses ke sumber daya</li>
+                        <li class="list-group-item">Dukungan melalui email</li>
+                    </ul>
+                    <button class="btn w-100 mt-auto" style="background-color: #ba4e8a;color:mintcream;" onclick="redirect1(event)">Pesan Sekarang</button>
+                </div>
+            </div>
+            <!-- Paket Standar -->
+            <div class="card text-center">
+                <div class="card-header">Paket Standar</div>
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">Rp150K<span class="fs-6">/bulan</span></h2>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">2 sesi per bulan</li>
+                        <li class="list-group-item">Dukungan email prioritas</li>
+                        <li class="list-group-item">Pelacakan kemajuan</li>
+                    </ul>
+                    <button class="btn w-100 mt-auto" style="background-color: #ba4e8a;color:mintcream;" onclick="redirect2(event)">Pesan Sekarang</button>
+                </div>
+            </div>
+            <!-- Paket Premium -->
+            <div class="card text-center">
+                <div class="card-header">Paket Premium</div>
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">Rp250K<span class="fs-6">/bulan</span></h2>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">4 sesi per bulan</li>
+                        <li class="list-group-item">Dukungan prioritas</li>
+                        <li class="list-group-item">Rencana yang dipersonalisasi</li>
+                    </ul>
+                    <button class="btn w-100 mt-auto" style="background-color: #ba4e8a;color:mintcream;" onclick="redirect3(event)">Pesan Sekarang</button>
+                </div>
+            </div>
+            <!-- Paket Ultimate -->
+            <div class="card text-center">
+                <div class="card-header">Paket Ultimate</div>
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">Rp350K<span class="fs-6">/bulan</span></h2>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">Sesi tanpa batas per bulan</li>
+                        <li class="list-group-item">Dukungan 24/7</li>
+                        <li class="list-group-item">Webinar bulanan</li>
+                    </ul>
+                    <button class="btn w-100 mt-auto" style="background-color: #ba4e8a; color:mintcream;" onclick="redirect4(event)">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         function redirect1(event) {
             event.preventDefault();
             window.location.href = "{{ url('checkout-pembayaran-1') }}";
         }
 
-        function redirect2(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-2') }}";
-        }
+                function redirect2(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-2') }}";
+                }
 
-        function redirect3(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-3') }}";
-        }
+                function redirect3(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-3') }}";
+                }
 
-        function redirect4(event) {
-            event.preventDefault();
-            window.location.href = "{{ url('checkout-pembayaran-4') }}";
-        }
-    </script>
-</body>
+                function redirect4(event) {
+                    event.preventDefault();
+                    window.location.href = "{{ url('checkout-pembayaran-4') }}";
+                }
+            </script>
+    </body>
 
-</html>
+    </html>
