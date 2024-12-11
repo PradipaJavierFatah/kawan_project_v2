@@ -31,7 +31,7 @@
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('dashboard')" class="hover:bg-yellow-400">
-                            {{ __('Dashboard') }}
+                            {{ __('Home') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

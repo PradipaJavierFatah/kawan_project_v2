@@ -22,12 +22,10 @@
 
     <div id="header">
         {{-- Navbar Start --}}
-
         <nav class="sticky top-0 z-50 bg-white">
             @section('content')
-            </nav>
-
-            {{-- Navbar End --}}
+        </nav>
+        {{-- Navbar End --}}
 
             {{-- Home Start --}}
             <div class="container">
@@ -75,9 +73,11 @@
                                     <!-- Card 1 -->
                                     <div
                                         class="group relative flex flex-col justify-center items-center bg-purple-900 p-6 rounded-lg hover:bg-purple-700 transition-colors duration-300 w-48 h-54">
+                                        <a href="plans-login">
                                         <img src="{{ asset('asset/home/Mentor.png') }}" alt="Mentor"
                                             class="w-25 h-25 mb-2">
                                         <h3 class="mt-4 text-center text-white font-medium">Mentor</h3>
+                                        </a>
                                     </div>
 
                                     <!-- Card 2 -->

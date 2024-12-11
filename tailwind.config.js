@@ -22,6 +22,7 @@ export default {
                 primary: '#F2789F',
                 secondery: '#7BD3EA',
                 thrid:'#19012C',
+                purple: "A020F0",
             },
 
         },
@@ -29,4 +30,43 @@ export default {
 
     plugins: [forms],
 };
+
+// ### Mengatasi Conflict Dengan Bootsrap ### //
+
+// import defaultTheme from 'tailwindcss/defaultTheme';
+// import forms from '@tailwindcss/forms';
+
+// /** @type {import('tailwindcss').Config} */
+// export default {
+//     prefix: 'tw-', // Tambahin prefix
+//     content: [
+//         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+//         './storage/framework/views/*.php',
+//         './resources/views/**/*.blade.php',
+//     ],
+
+//     theme: {
+//         extend: {
+//             fontFamily: {
+//                 Kanit: ['Kanit'],
+//                 poppins: ['Poppins'],
+//                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+//             },
+//             colors: {
+//                 primary: '#F2789F',
+//                 secondery: '#7BD3EA',
+//                 thrid: '#19012C',
+//             },
+//             screens: {
+//                 xs: '475px', // Tambah breakpoint
+//             },
+//         },
+//     },
+
+//     plugins: [
+//         forms,
+//         require('@tailwindcss/typography'),
+//         require('@tailwindcss/aspect-ratio'),
+//     ],
+// };
 
