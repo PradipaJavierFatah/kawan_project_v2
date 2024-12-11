@@ -51,7 +51,7 @@
                                     life that is rarely taught in schools. Our goal is to accompany and help you develop
                                     yourself to achieve a better and more balanced life. With various inspiring and
                                     practical content, we are committed to being your partner on your journey to the best
-                                    version of yourself Apa Ya Tambahin.
+                                    version of yourself.
                                 </p>
                             </div>
                         </div>
@@ -104,11 +104,6 @@
                         </div>
                     </div>
                     {{-- Services End --}}
-                    {{-- Article Start --}}
-                    <div id="articles" class="mt-8">
-                        <div class="text-center mb-8">
-                            <h2 class="text-3xl font-bold text-white">Our Articles</h2>
-                        </div>
                 </div>
             </div>
         </div>
