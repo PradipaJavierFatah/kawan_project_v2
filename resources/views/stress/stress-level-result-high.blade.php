@@ -1,57 +1,52 @@
-@extends('layout')
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Stress Level Check</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.1/dist/flowbite.min.css" rel="stylesheet">
-    @vite('resources/css/app.css')
-    <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stress Level Check</title>
+  @vite('resources/css/app.css')
+  {{-- <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../src/input.css"> --}}
+  <link rel="icon" type="image/png" sizes="32x32" href="asset/faviconlogo.png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
 
-    <style>
-        body {
-            font-family: 'Kanit', sans-serif;
-        }
+    .header-gradient {
+      background: linear-gradient(to right, #F2789F 50%, #F2789F 100%);
+    }
 
-        .header-gradient {
-            background: linear-gradient(to right, #F2789F 50%, #F2789F 100%);
-        }
+    .next-button {
+      background-color: #B94E8A;
+    }
 
-        .next-button {
-            background-color: #B94E8A;
-        }
+    .next-button:hover {
+      background-color: #9b3e6e;
+    }
 
-        .next-button:hover {
-            background-color: #9b3e6e;
-        }
+    .prev-button {
+      background-color: #B94E8A;
+    }
 
-        .prev-button {
-            background-color: #B94E8A;
-        }
+    .prev-button:hover {
+      background-color: #9b3e6e;
+    }
 
-        .prev-button:hover {
-            background-color: #9b3e6e;
-        }
+    .custom-font {
+      font-family: 'Roboto', sans-serif;
+    }
 
-        .custom-font {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .test-block {
+    .test-block {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #a21caf;
-            /* bg-fuchsia-700 */
+            background-color: #a21caf; /* bg-fuchsia-700 */
             color: white;
             padding: 1rem;
             margin: 1rem;
@@ -68,258 +63,360 @@
             margin-left: 2rem;
         }
 
-        .indicator-bar {
-            display: flex;
-            width: 60%;
-            height: 30px;
-            /* Adjusted height */
-            margin: 20px auto 0;
-            /* Added top margin to increase distance from "Low Stress Level" */
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
+    .indicator-bar {
+      display: flex;
+      width: 60%;
+      height: 30px;
+      /* Adjusted height */
+      margin: 20px auto 0;
+      /* Added top margin to increase distance from "Low Stress Level" */
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .bar-section {
-            flex: 1;
-            height: 100%;
-        }
+    .bar-section {
+      flex: 1;
+      height: 100%;
+    }
 
-        .green {
-            background-color: green;
-        }
+    .green {
+      background-color: green;
+    }
 
-        .yellow {
-            background-color: yellow;
-        }
+    .yellow {
+      background-color: yellow;
+    }
 
-        .red {
-            background-color: red;
-        }
+    .red {
+      background-color: red;
+    }
 
-        .score-indicator {
-            position: absolute;
-            top: -25px;
-            width: 50px;
-            text-align: center;
-            font-size: 12px;
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-            padding: 2px;
-        }
+    .score-indicator {
+      position: absolute;
+      top: -25px;
+      width: 50px;
+      text-align: center;
+      font-size: 12px;
+      background-color: white;
+      color: black;
+      border-radius: 5px;
+      padding: 2px;
+    }
 
-        .arrow {
-            position: absolute;
-            left: 50%;
-            bottom: -30px;
-            /* Adjusted position */
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .arrow {
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      /* Adjusted position */
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .arrow .pointer {
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 8px solid rgb(255, 255, 255);
-        }
+    .arrow .pointer {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid rgb(255, 255, 255);
+    }
 
-        .arrow .label {
-            background-color: rgba(0, 0, 0, 0.57);
-            color: rgb(255, 255, 255);
-            font-size: 12px;
-            margin-top: 2px;
-            /* Adjusted margin */
-            padding: 2px 4px;
-            border-radius: 3px;
-        }
+    .arrow .label {
+      background-color: rgba(0, 0, 0, 0.57);
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      margin-top: 2px;
+      /* Adjusted margin */
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
 
-        .font-kanit {
-            font-family: 'Kanit', sans-serif;
-        }
+    .font-kanit {
+      font-family: 'Kanit', sans-serif;
+    }
 
-        /* Adjustments for the consult button */
-        button {
-            font-family: 'Kanit', sans-serif;
-        }
+    /* Adjustments for the consult button */
+    button {
+      font-family: 'Kanit', sans-serif;
+    }
 
-        /* Hover effect for the consult button */
-        button:hover {
-            background-color: #6b7280;
-        }
-    </style>
+    /* Hover effect for the consult button */
+    button:hover {
+      background-color: #6b7280;
+    }
+  </style>
 </head>
 
 <body class="bg-white text-gray-800">
-        {{-- Navbar Start --}}
-        <nav class="sticky top-0 z-50 bg-white">
-        </nav>
-        {{-- Navbar End --}}
+  <div id="navbar">
+    <nav class="bg-primary p-4 flex justify-between items-center">
+      <div>
+        <a href="home-after">
+          <img src="asset/home/logo.png" alt="Kawan" class="h-12 w-auto">
+        </a>
+      </div>
 
-        @section('content')
+      <ul class="lg:flex gap-8 hidden">
+        <li class="text-xl font-bold cursor-pointer hover:underline">
+          <a href="home-after">Home</a>
+        </li>
+        <li class="text-xl font-bold cursor-pointer hover:underline">
+          <a href="#">Services</a>
+        </li>
+        <li class="text-xl font-bold cursor-pointer hover:underline">
+          <a href="#">Payments</a>
+        </li>
+      </ul>
 
-    <!-- Personality Test Block -->
-    <section class="test-block">
-        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center">
-            <!-- Placeholder for Logo -->
-            <span><img src="asset/home/stress.png" alt="Stress Logo"></span>
+      <div class="lg:flex gap-2 hidden">
+        <a href="dashboard" class="flex flex-row items-center">
+          <span class="px-4 text-xl font-bold">Yanto</span>
+          <img src="asset/home/profile.png" alt="" class="h-12 w-12 rounded-full">
+        </a>
+      </div>
+
+      <button id="hamburgToggle" class="lg:hidden block">
+        <img src="asset/home/hamburgicon.png" alt="" class="h-8 w-8">
+      </button>
+    </nav>
+
+    <!-- {{-- Mobile Menu --}} -->
+    <div id="mobile-menu" class="hidden bg-primary">
+      <ul class="px-4 py-2">
+        <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
+          <a href="homeafter">Home</a>
+        </li>
+        <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
+          <a href="">Services</a>
+        </li>
+        <li class="py-2 text-lg font-bold cursor-pointer hover:underline">
+          <a href="">Payments</a>
+        </li>
+      </ul>
+
+      <hr class="border-black m-5">
+
+      <div class="flex px-4 pt-2 pb-4 gap-2">
+        <a href="#" class="flex flex-row items-center">
+          <img src="asset/home/profile.png" alt="" class="h-12 w-auto">
+          <span class="px-4 text-lg font-bold">Username</span>
+        </a>
+      </div>
+    </div>
+    <!-- {{-- Mobile Menu --}} -->
+  </div>
+
+  <!-- Personality Test Block -->
+  <section class="test-block">
+    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center">
+        <!-- Placeholder for Logo -->
+        <span><img src="asset/home/stress.png" alt="Stress Logo"></span>
+    </div>
+    <div class="text-container">
+        <h1 class="text-4xl">Stress Level Check</h1>
+        <p class="mt-2 text-xl">Cari tahu tingkat stres Anda dan konsultasikan pada ahli</p>
+    </div>
+</section>
+
+  <!-- Result Block -->
+  <section class="my-4 mx-4 p-4 text-center rounded-lg bg-red-700 text-white">
+    <div class="ml-8">
+      <h1 class="text-4xl">Tingkat Stres Tinggi</h1>
+      <!-- Indicator Bar -->
+      <div class="indicator-bar mx-auto my-4 relative">
+        <div class="bar-section green"></div>
+        <div class="bar-section yellow"></div>
+        <div class="bar-section red"></div>
+        <!-- Lib map score bar indicator -->
+        <div class="absolute right-0 w-1/3 flex justify-center">
+          <div class="flex items-center flex-col">
+            <!-- Arrow pointing to the green bar with "you" text -->
+            <div class="arrow">
+              <span class="label">Anda</span>
+              <div class="pointer"></div>
+            </div>
+          </div>
         </div>
-        <div class="text-container">
-            <h1 class="text-4xl">Stress Level Check</h1>
-            <p class="mt-2 text-xl">Cari tahu tingkat stres Anda dan konsultasikan pada ahli</p>
-        </div>
-    </section>
+      </div>
+      <p class="mt-2 text-xl">Anda berada pada tingkat stres yang tinggi. Stress tingkat tinggi adalah kondisi seseorang mengalami tekanan emosional dan mental yang sering kali disertai dengan gejala fisik seperti sakit kepala, jantung berdebar kencang, dan kesulitan tidur, sehingga mengganggu dalam kehidupan sehari-hari.</p>
+      <!-- Additional text -->
+      <p class="mt-6 text-lg font-kanit">Cara menangani stres tingkat tinggi:</p>
+      <p class="mt-1 text-lg font-kanit">1. Berolahraga secara teratur, seperti berjalan kaki, berlari, atau berenang.</p>
+      <p class="mt-1 text-lg font-kanit">2. Istirahat sejenak selama bekerja atau belajar.</p>
+      <p class="mt-1 text-lg font-kanit">3. Kurangi konsumsi kafein dan alkohol.</p>
+      <p class="mt-1 text-lg font-kanit">4. Melakukan meditasi secara rutin untuk menenangkan pikiran dan mengurangi stres.</p>
+      <p class="mt-6 text-lg font-kanit">Bila kondisi stres tidak menurun, segera konsultasikan masalah ini kepada kami!</p>
+      <!-- Consult button -->
+      <a href="consult">
+        <button
+            class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-md transition duration-300 ease-in-out hover:bg-blue-700">
+            Konsultasi
+        </button>
+    </a>
+    </div>
+  </section>
 
-    <!-- Result Block -->
-    <section class="my-4 mx-4 p-4 text-center rounded-lg bg-red-700 text-white">
-        <div class="ml-8">
-            <h1 class="text-4xl">Tingkat Stres Tinggi</h1>
-            <!-- Indicator Bar -->
-            <div class="indicator-bar mx-auto my-4 relative">
-                <div class="bar-section green"></div>
-                <div class="bar-section yellow"></div>
-                <div class="bar-section red"></div>
-                <!-- Lib map score bar indicator -->
-                <div class="absolute right-0 w-1/3 flex justify-center">
-                    <div class="flex items-center flex-col">
-                        <!-- Arrow pointing to the green bar with "you" text -->
-                        <div class="arrow">
-                            <span class="label">Anda</span>
-                            <div class="pointer"></div>
-                        </div>
+
+  <!-- ARTICLES -->
+  <section>
+    <div class="text-2xl font-semibold text-center py-5 flex-wrap">
+        <span>ARTICLES & NEWS</span>
+    </div>
+
+    <div id="container" class="bg-white">
+        <div class="p-4">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+                <div id="box" class="bg-gray-100 rounded-lg m-4">
+                    <div class="flex justify-center">
+                        <img src="asset/home/remaja.png" alt="" class="w-full h-52 rounded-lg bg-center">
                     </div>
+                    <div class="p-4">
+                        <div class="mt-2 text-md text-black">
+                            <span>Article</span>
+                        </div>
+                        <div class="mt-2 text-xl text-black font-bold">
+                            <h3>Mengenal Pentingnya Kesehatan Mental pada Remaja</h3>
+                        </div>
+                        <div class="mt-4  text-md">
+                            <a href="https://yankes.kemkes.go.id/view_artikel/362/mengenal-pentingnya-kesehatan-mental-pada-remaja" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
+                                Read More
+                            </a>
+                        </div>
+                    </div>    
+                </div>
+
+                <div id="box" class="bg-gray-100 rounded-lg m-4">
+                    <div class="flex justify-center">
+                        <img src="asset/home/kesmen.webp" alt="" class="w-full h-52 rounded-lg bg-center">
+                    </div>
+                    <div class="p-4">
+                        <div class="mt-2 text-md text-black">
+                            <span>Article</span>
+                        </div>
+                        <div class="mt-2 text-xl text-black font-bold">
+                            <h3>Apa Itu Kesehatan Mental? Gejala & Penyebab</h3>
+                        </div>
+                        <div class="mt-4  text-md">
+                            <a href="https://www.halodoc.com/kesehatan/kesehatan-mental" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
+                                Read More
+                            </a>
+                        </div>
+                    </div>    
+                </div>
+
+                <div id="box" class="bg-gray-100 rounded-lg m-4">
+                    <div class="flex justify-center">
+                        <img src="asset/home/mhawareness.png" alt="" class="w-full lg:h-52 rounded-lg bg-center">
+                    </div>
+                    <div class="p-4 ">
+                        <div class="mt-2 text-md text-black">
+                            <span>Article</span>
+                        </div>
+                        <div class="mt-2 text-xl text-black font-bold">
+                            <h3>Memahami Kesehatan Mental dan Cara Penanganannya</h3>
+                        </div>
+                        <div class="mt-4  text-md">
+                            <a href="https://rsj.acehprov.go.id/berita/kategori/artikel/memahami-kesehatan-mental-dan-cara-penanganannya" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
+                                Read More
+                            </a>
+                        </div>
+                    </div>    
+                </div>
+
+                <div id="box" class="bg-gray-100 rounded-lg m-4">
+                    <div class="flex justify-center">
+                        <img src="asset/home/artikel4-konsul.jpg" alt="" class="w-full h-52 rounded-lg bg-center">
+                    </div>
+                    <div class="p-4">
+                        <div class="mt-2 text-md text-black">
+                            <span>Article</span>
+                        </div>
+                        <div class="mt-2 text-xl text-black font-bold">
+                            <h3>Manfaat Konsultasi Psikologi untuk Kesehatan Mental</h3>
+                        </div>
+                        <div class="mt-4  text-md">
+                            <a href="https://www.alodokter.com/memanfaatkan-konsultasi-psikologi-untuk-meningkatkan-kesehatan-mental#:~:text=Konsultasi%20psikologi%20adalah%20kegiatan%20komunikasi,gangguan%20mental%20yang%20dialami%20pasien." target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
+                                Read More
+                            </a>
+                        </div>
+                    </div>    
                 </div>
             </div>
-            <p class="mt-2 text-xl">Anda berada pada tingkat stres yang tinggi. Stress tingkat tinggi adalah kondisi
-                seseorang mengalami tekanan emosional dan mental yang sering kali disertai dengan gejala fisik seperti
-                sakit kepala, jantung berdebar kencang, dan kesulitan tidur, sehingga mengganggu dalam kehidupan
-                sehari-hari.</p>
-            <!-- Additional text -->
-            <p class="mt-6 text-lg font-kanit">Cara menangani stres tingkat tinggi:</p>
-            <p class="mt-1 text-lg font-kanit">1. Berolahraga secara teratur, seperti berjalan kaki, berlari, atau
-                berenang.</p>
-            <p class="mt-1 text-lg font-kanit">2. Istirahat sejenak selama bekerja atau belajar.</p>
-            <p class="mt-1 text-lg font-kanit">3. Kurangi konsumsi kafein dan alkohol.</p>
-            <p class="mt-1 text-lg font-kanit">4. Melakukan meditasi secara rutin untuk menenangkan pikiran dan
-                mengurangi stres.</p>
-            <p class="mt-6 text-lg font-kanit">Bila kondisi stres tidak menurun, segera konsultasikan masalah ini kepada
-                kami!</p>
-            <!-- Consult button -->
-            <a href="consult">
-                <button
-                    class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-md transition duration-300 ease-in-out hover:bg-blue-700">
-                    Konsultasi
-                </button>
+        </div>
+    </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer class="bg-primary mt-5 p-4">
+    <div class="flex justify-between">
+        <div>
+            <a href="homeafter">
+                <img src="asset/home/Logo.png" alt="Kawan" class="h-12 w-auto">
             </a>
         </div>
-    </section>
 
+        <div class="flex flex-row space-x-12">
+            <div class="">
+                <h2 class="text-2xl font-bold">
+                    Tentang Kawan  
+                </h2>
+                <ul class="text-lg font-semibold py-4">
+                    <li class="py-2 hover:underline">
+                        <a href="">About Us</a>
+                    </li>
+                    <li class="py-2 hover:underline">
+                        <a href="">Blog</a>
+                    </li>
+                    <li class="py-2 hover:underline">
+                        <a href="">Privacy & Policy</a>
+                    </li>
+                </ul>
+            </div>
 
-    <!-- ARTICLES -->
-    <section>
-        <div class="text-2xl font-semibold text-center py-5 flex-wrap">
-            <span>ARTICLES & NEWS</span>
-        </div>
-
-        <div id="container" class="bg-white">
-            <div class="p-4">
-                <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/remaja.png" alt="" class="w-full h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Mengenal Pentingnya Kesehatan Mental pada Remaja</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://yankes.kemkes.go.id/view_artikel/362/mengenal-pentingnya-kesehatan-mental-pada-remaja"
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/kesmen.webp" alt=""
-                                class="w-full h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Apa Itu Kesehatan Mental? Gejala & Penyebab</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://www.halodoc.com/kesehatan/kesehatan-mental" target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/mhawareness.png" alt=""
-                                class="w-full lg:h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4 ">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Memahami Kesehatan Mental dan Cara Penanganannya</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://rsj.acehprov.go.id/berita/kategori/artikel/memahami-kesehatan-mental-dan-cara-penanganannya"
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="box" class="bg-gray-100 rounded-lg m-4">
-                        <div class="flex justify-center">
-                            <img src="asset/home/artikel4-konsul.jpg" alt=""
-                                class="w-full h-52 rounded-lg bg-center">
-                        </div>
-                        <div class="p-4">
-                            <div class="mt-2 text-md text-black">
-                                <span>Article</span>
-                            </div>
-                            <div class="mt-2 text-xl text-black font-bold">
-                                <h3>Manfaat Konsultasi Psikologi untuk Kesehatan Mental</h3>
-                            </div>
-                            <div class="mt-4  text-md">
-                                <a href="https://www.alodokter.com/memanfaatkan-konsultasi-psikologi-untuk-meningkatkan-kesehatan-mental#:~:text=Konsultasi%20psikologi%20adalah%20kegiatan%20komunikasi,gangguan%20mental%20yang%20dialami%20pasien."
-                                    target="_blank"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-primary rounded-lg hover:bg-secondary hover:text-white">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <h2 class="text-2xl font-bold">
+                    Find Us On  
+                </h2>
+                <ul class="text-lg font-semibold py-4">
+                    <li class="py-2 hover:underline">
+                        <a href="https://instagram.com">Instagram</a>
+                    </li>
+                    <li class="py-2 hover:underline">
+                        <a href="https://x.com">Twitter</a>
+                    </li>
+                    <li class="py-2 hover:underline">
+                        <a href="https://facebook.com">Facebook</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <hr class="my-6 border-gray-800">  
 
-    @endsection
-
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <span class="text-sm sm:text-center">
+            © 2023 Kawan™ All Rights Reserved.
+        </span>
+        <div class="flex mt-4">
+            <a href="https://instagram.com" class="text-black" target="_blank">
+                <img src="asset/home/instagram.png" alt="Instagram" class="h-6 w-6">
+                <span class="sr-only">Instagram page</span>
+            </a>
+            <a href="https://x.com" class="ms-5 px-4">
+                <img src="asset/home/twitter.png" alt="Twitter/X" class="h-6 w-6">
+                <span class="sr-only">Twitter/X page</span>
+            </a>
+            <a href="https://facebook.com" class="ms-5 me-10">
+                <img src="asset/home/facebook.png" alt="Facebook" class="h-6 w-6">
+                <span class="sr-only">Facebook account</span>
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 
 </html>

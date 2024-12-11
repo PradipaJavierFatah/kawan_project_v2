@@ -75,6 +75,7 @@ class ArticleController extends Controller
         ]);
     
         $articles = Article::findOrFail($id);
+<<<<<<< HEAD
         $articles->title = $validatedData['title'];
         $articles->category = $validatedData['category'];
         $articles->content = $validatedData['content'];
@@ -83,17 +84,34 @@ class ArticleController extends Controller
             // Delete the old photo if it exists
             if ($articles->photo && Storage::disk('public')->exists($articles->photo)) {
                 Storage::disk('public')->delete($articles->photo);
+=======
+        $articles->title  = $request->title;
+        $articles->category = $request->category;
+        $articles->content = $request->content;
+
+
+        if($request->hasFile('photo')){
+                if ($articles->photo) {
+                    Storage::delete($articles->photo);
+>>>>>>> f0574da29bb78039f1c0869e17f47386450d47fc
             }
     
             // Store the new photo
             $path = $request->file('photo')->store('image', 'public');
             $articles->photo = $path;
         }
+<<<<<<< HEAD
     
         // Save the updated data to the database
         $articles->save();
     
         return redirect()->route('articles.create')->with('success', 'Data berhasil diperbarui!');
+=======
+
+        $articles->save();
+
+        return redirect()->route('articles.create')->with('success', 'Data berhasil diperbarui !');
+>>>>>>> f0574da29bb78039f1c0869e17f47386450d47fc
     }
     
 }
