@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Create Article</h5>
                         <p class="card-text">Add new articles for your website.</p>
-                        <a class="btn btn-primary">Go to Create Article</a>
+                        <a href="{{ route('articles.create') }}" class="btn btn-primary">Go to Create Article</a>
                     </div>
                 </div>
             </div>

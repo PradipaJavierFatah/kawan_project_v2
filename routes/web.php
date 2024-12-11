@@ -3,11 +3,8 @@
 use App\Http\Controllers\cekController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProfileController;
-<<<<<<< HEAD
 use App\Http\Controllers\ArticleController;
-=======
 use App\Http\Controllers\AdminAuthController;
->>>>>>> 952e6e14bb6212cbcdaec02ffef2a0605f421d3a
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\UserController;
@@ -237,6 +234,9 @@ Route::get('/cek2', [cekController::class, 'index'])->middleware('auth', 'verifi
 require __DIR__ . '/auth.php';
 
 //Article Start - Ryan
+//Create
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+
 
 //Connect dashboard dan article
 Route::get('/dashboard', [ArticleController::class, 'dashboard'])->name('dashboard');
@@ -246,6 +246,8 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ind
 Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
 //Resources
 Route::resource('articles', ArticleController::class);
+
+
 // Delete Article
 Route::post('/article/{article}', [ArticleController::class, 'delete']);
 Route::put('/article/{article}', [ArticleController::class, 'update']);

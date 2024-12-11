@@ -40,9 +40,10 @@
 </head>
 
 <body style="background-color:#19012C">
+    
 <div class="w-screen">
 <div>
-    <div class="container mt-5">
+    <div class="container mt-5"> 
         <div class="center-content">
             <h1 style="color: #d8bfd8;">Create a New Article</h1>
             <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data" class="w-50">
@@ -79,7 +80,11 @@
                     @enderror
                 </div>
                 
-                <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+                <button type="submit"  class="btn btn-success">Submit</button>
+
+                <a href="{{ route('dashboard_admin') }}" style="background-color: crimson" class="btn btn-secondary back-button">
+                    Back
+                </a>
             </form>
         </div>
 
